@@ -1,0 +1,58 @@
+﻿@model Student
+@{
+    ViewData["Title"] = "Detay";
+}
+
+<html>
+
+<style>
+
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #1E68B0;
+            color: white;
+        }
+</style>
+
+<body>
+
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+        <table id="customers">
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Student ID</th>
+            </tr>
+
+            <tr>
+                <td>@Model.Name</td>
+                <td>@Model.Department</td>
+                <td>@Model.StuID</td>
+            </tr>
+        </table>
+    </header>
+
+</body>
+
+</html>
