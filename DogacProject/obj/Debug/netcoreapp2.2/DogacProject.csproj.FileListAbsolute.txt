@@ -63,3 +63,4 @@ C:\Users\nuri.akyildiz\Source\Repos\Dogac-StudentList-Project\DogacProject\obj\D
 C:\Users\nuri.akyildiz\Source\Repos\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\DogacProject.pdb
 C:\Users\nuri.akyildiz\Source\Repos\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\DogacProject.csproj.CopyComplete
 C:\Users\nuri.akyildiz\Source\Repos\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\Razor\Views\Students\Create.g.cshtml.cs
+C:\Users\nuri.akyildiz\source\repos\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\Razor\Views\Students\Edit.g.cshtml.cs

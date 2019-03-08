@@ -30,9 +30,62 @@ namespace DogacProject.Controllers
         [HttpPost]
         public IActionResult Create(Student stu)
         {
-            DogacContext.Students.Add(stu);
-            DogacContext.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                DogacContext.Students.Add(stu);
+                DogacContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(stu);
+            }
+        }
+        public IActionResult Edit(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return BadRequest();
+            }
+            var student = DogacContext.Students.Find(id);
+
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            return View(student);
+
+
+        }
+        [HttpPost]
+        public IActionResult Edit(int? id, Student student)
+        {
+
+            if (!id.HasValue)
+            {
+                return BadRequest();
+            }
+
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            if (id != student.Id)
+            {
+                return BadRequest();
+            }
+            if (ModelState.IsValid)
+            {
+                DogacContext.Students.Update(student);
+                DogacContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(student);
+            }
         }
 
         public IActionResult Detay(int id)
