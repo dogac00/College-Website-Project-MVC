@@ -9861,7 +9861,7 @@
       ]
     },
     "System.IO.Pipelines/4.5.2": {
-      "sha512": "hKbZx0AW9N6OLeXrgdrKJH5k8goImfd89EuvRtZRv6v7qBhwRX1mXEASYkoYIenmNrVtj0HYv4/Rk68t1e3agA==",
+      "sha512": "NOC/SO4gSX6t0tB25xxDPqPEzkksuzW7NVFBTQGAkjXXUPQl7ZtyE83T7tUCP2huFBbPombfCKvq1Ox1aG8D9w==",
       "type": "package",
       "path": "system.io.pipelines/4.5.2",
       "files": [
@@ -12941,23 +12941,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Duygu\\.nuget\\packages\\": {},
+    "C:\\Users\\nuri.akyildiz\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Duygu\\source\\repos\\DogacProject\\DogacProject\\DogacProject.csproj",
+      "projectUniqueName": "C:\\Users\\nuri.akyildiz\\Source\\Repos\\Dogac-StudentList-Project\\DogacProject\\DogacProject.csproj",
       "projectName": "DogacProject",
-      "projectPath": "C:\\Users\\Duygu\\source\\repos\\DogacProject\\DogacProject\\DogacProject.csproj",
-      "packagesPath": "C:\\Users\\Duygu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Duygu\\source\\repos\\DogacProject\\DogacProject\\obj\\",
+      "projectPath": "C:\\Users\\nuri.akyildiz\\Source\\Repos\\Dogac-StudentList-Project\\DogacProject\\DogacProject.csproj",
+      "packagesPath": "C:\\Users\\nuri.akyildiz\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nuri.akyildiz\\Source\\Repos\\Dogac-StudentList-Project\\DogacProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Duygu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nuri.akyildiz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

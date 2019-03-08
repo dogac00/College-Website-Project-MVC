@@ -22,6 +22,19 @@ namespace DogacProject.Controllers
             return View(students);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Student stu)
+        {
+            DogacContext.Students.Add(stu);
+            DogacContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Detay(int id)
         {
 
