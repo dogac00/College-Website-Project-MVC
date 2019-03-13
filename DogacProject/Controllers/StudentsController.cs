@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DogacProject.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DogacProject.Controllers
 {
@@ -41,6 +42,7 @@ namespace DogacProject.Controllers
                 return View(stu);
             }
         }
+
         public IActionResult Edit(int? id)
         {
             if (!id.HasValue)
@@ -100,6 +102,38 @@ namespace DogacProject.Controllers
             {
                 return NotFound();
             }
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var student = await DogacContext.Students
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            return View(student);
+        }
+        
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var department = await DogacContext.Students.FindAsync(id);
+            DogacContext.Students.Remove(department);
+            await DogacContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool StudentExists(int id)
+        {
+            return DogacContext.Students.Any(e => e.Id == id);
         }
     }
 }
