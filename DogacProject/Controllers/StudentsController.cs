@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DogacProject.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DogacProject.Controllers
 {
@@ -25,6 +26,7 @@ namespace DogacProject.Controllers
 
         public IActionResult Create()
         {
+            ViewData["DepartmentName"] = new SelectList(DogacContext.Department, "Id", "Name", -1);
             return View();
         }
 

@@ -13,8 +13,8 @@
         <input asp-for="Name" class="form-control" />
     </div>
     <div class="form-group">
-        <label asp-for="Department.Name" class="control-label">Department Name</label>
-        <input asp-for="Department.Name" class="form-control" />
+        <label asp-for="DepartmentID" class="control-label">Department Name</label>
+        <select asp-for="DepartmentID" class="form-control" asp-items="ViewBag.DepartmentName"></select>
     </div>
     <div class="form-group">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
