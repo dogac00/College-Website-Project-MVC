@@ -4,34 +4,52 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    #departments {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-<table class="table">
-    <thead>
+    #departments td, #departments th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+    #departments tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #departments tr:hover {
+        background-color: #ddd;
+    }
+
+    #departments th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #0D3023;
+        color: white;
+    }
+
+</style>
+
+<table id="departments">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
-    </thead>
-    <tbody>
+
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Detay" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td><a asp-controller="Students" asp-action="Detay" asp-route-id="@item.Id" class="btn btn-primary">Detay</a></td>
+            <td><a asp-controller="Students" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a></td>
+            <td><a asp-controller="Students" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary">Delete</a></td>
+        </tr>
         }
-    </tbody>
 </table>

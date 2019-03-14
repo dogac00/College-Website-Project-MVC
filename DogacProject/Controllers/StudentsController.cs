@@ -93,7 +93,7 @@ namespace DogacProject.Controllers
         public IActionResult Detay(int id)
         {
 
-            Student student = DogacContext.Students.Where(s => s.Id == id).FirstOrDefault();
+            Student student = DogacContext.Students.Include(s=>s.Department).Where(s => s.Id == id).FirstOrDefault();
             if (student != null)
             {
                 return View(student);
