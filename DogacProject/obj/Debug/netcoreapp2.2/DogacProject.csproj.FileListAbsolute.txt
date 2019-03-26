@@ -66,7 +66,6 @@ C:\Users\nuri.akyildiz\source\repos\Dogac-StudentList-Project\DogacProject\obj\D
 C:\Users\nuri.akyildiz\source\repos\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\Razor\Views\Departments\Create.g.cshtml.cs
 C:\Users\nuri.akyildiz\source\repos\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\DogacProject.csprojAssemblyReference.cache
 C:\Users\nuri.akyildiz\source\repos\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\Razor\Views\Departments\Delete.g.cshtml.cs
-C:\Users\nuri.akyildiz\source\repos\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\Razor\Views\Departments\Detay.g.cshtml.cs
 C:\Users\nuri.akyildiz\source\repos\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\Razor\Views\Departments\Edit.g.cshtml.cs
 C:\Users\nuri.akyildiz\source\repos\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\Razor\Views\Students\Delete.g.cshtml.cs
 C:\Users\nuri.akyildiz\source\repos\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\Razor\Views\Departments\Index.g.cshtml.cs
@@ -110,3 +109,4 @@ C:\Users\Lab1\Desktop\StudentList\Dogac-StudentList-Project\DogacProject\obj\Deb
 C:\Users\Lab1\Desktop\StudentList\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\DogacProject.dll
 C:\Users\Lab1\Desktop\StudentList\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\DogacProject.pdb
 C:\Users\Lab1\Desktop\StudentList\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\DogacProject.csproj.CopyComplete
+C:\Users\nuri.akyildiz\Source\Repos\Dogac-StudentList-Project\DogacProject\obj\Debug\netcoreapp2.2\Razor\Views\Departments\Details.g.cshtml.cs
