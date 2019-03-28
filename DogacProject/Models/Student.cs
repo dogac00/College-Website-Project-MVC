@@ -21,7 +21,7 @@ namespace DogacProject.Models
         [Required(ErrorMessage = "Student ID is Required")]
         public long StuID { get; set; }
 
-        public int DepartmentID { get; set; }
+        public int DepartmentId { get; set; }
         public Department Department { get; set; }
     }
 }

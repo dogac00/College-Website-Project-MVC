@@ -4,19 +4,22 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create a New Department</h1>
+<h1 style="text-align: center; ">Create a New Department</h1>
+
 <hr />
-<div class="row">
+
+<div class="row" style="display: block; text-align: center; ">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <h3>Department Name</h3>
+                <input asp-for="Name" class="form-control w3-input w3-border w3-round-large" style="width: 40%; display: inline-block; "/>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="w3-input w3-border w3-round-large" style="width: 40%; display: inline-block; " />
             </div>
         </form>
     </div>

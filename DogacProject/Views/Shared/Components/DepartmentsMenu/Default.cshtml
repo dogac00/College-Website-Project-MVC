@@ -1,0 +1,10 @@
+﻿
+@model IList<Department>
+
+@foreach (var item in Model)
+{
+<a class="w3-bar-item w3-button w3-hide-small" asp-area="" asp-controller="Departments"
+   asp-action="Details" asp-route-id="@item.Id">
+    <i class="fa fa-users"></i>&nbsp;&nbsp;@item.Name&nbsp;&nbsp;
+</a>
+}

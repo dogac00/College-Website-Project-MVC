@@ -1,0 +1,58 @@
+﻿@model Student
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<style>
+
+    #students {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #students td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #students tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #students tr:hover {
+        background-color: #ddd;
+    }
+
+    #students th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #0A1C34;
+        color: white;
+    }
+
+</style>
+
+    <table id="students">
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Student ID</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        
+        <tr>
+            <td>@Model.Name</td>
+            <td>@Model.Department.Name</td>
+            <td>@Model.StuID</td>
+            <td><a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-blue">Edit</a></td>
+            <td><a asp-action="Delete" asp-route-id="@Model.Id" class="w3-button w3-red">Delete</a></td>
+        </tr>
+    </table>
+
+<div style="display: block; text-align: center; ">
+    <br>
+    <a asp-action="Index" class="w3-button w3-indigo" id="back">Back to List</a>
+</div>

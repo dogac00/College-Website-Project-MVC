@@ -33,6 +33,12 @@ namespace DogacProject.Controllers
         [HttpPost]
         public IActionResult Create(Student stu)
         {
+            var depst = DogacContext.Department.Where(p => p.Name == "dfsdf");
+
+            if (stu.Department == null)
+            {
+
+            }
             if (ModelState.IsValid)
             {
                 DogacContext.Students.Add(stu);
@@ -47,9 +53,12 @@ namespace DogacProject.Controllers
 
         public IActionResult Edit(int? id)
         {
+            ViewData["DepartmentName"] = new SelectList(DogacContext.Department, "Id", "Name", -1);
+
             if (!id.HasValue)
             {
-                return BadRequest();
+                var students = DogacContext.Students.ToList();
+                return View(students);
             }
             var student = DogacContext.Students.Find(id);
 
@@ -59,9 +68,8 @@ namespace DogacProject.Controllers
             }
 
             return View(student);
-
-
         }
+
         [HttpPost]
         public IActionResult Edit(int? id, Student student)
         {
@@ -92,7 +100,7 @@ namespace DogacProject.Controllers
             }
         }
 
-        public IActionResult Detay(int id)
+        public IActionResult Details(int id)
         {
 
             Student student = DogacContext.Students.Include(s=>s.Department).Where(s => s.Id == id).FirstOrDefault();

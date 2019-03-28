@@ -1,30 +1,52 @@
 ﻿@model DogacProject.Models.Department
-
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<style>
+    #my_select {
+        width: 40%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
 
-<h4>Department</h4>
-<hr />
-<div class="row">
+    #stu_input {
+        width: 40%;
+        display: inline-block;
+    }
+
+    h1 {
+        text-align: center;
+    }
+</style>
+
+<h1>Edit @Model.Name</h1>
+
+<div class="row" style="display: block; text-align: center; ">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form name="StudentsEditForm" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <h3>Department Name</h3>
+                <input asp-for="Name" class="form-control w3-input w3-border w3-round-large" style="width: 40%; display: inline-block; " />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <button type="submit" class="w3-button w3-indigo">Edit</button>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a asp-action="Index" class="w3-button w3-indigo w3-round-large">Back to List</a>
 </div>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

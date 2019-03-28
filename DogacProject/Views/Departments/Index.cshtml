@@ -1,10 +1,9 @@
 ﻿@model IEnumerable<DogacProject.Models.Department>
-
 @{
     ViewData["Title"] = "Index";
 }
-
 <style>
+
 
     #departments {
         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -12,7 +11,7 @@
         width: 100%;
     }
 
-    #departments td, #departments th {
+        #departments td, #departments th {
             border: 1px solid #ddd;
             padding: 8px;
         }
@@ -29,27 +28,34 @@
         padding-top: 12px;
         padding-bottom: 12px;
         text-align: left;
-        background-color: #0D3023;
+        background-color: #0A1C34;
         color: white;
     }
 
+    #button-text {
+        display: block;
+        text-align: center;
+    }
 </style>
-
+<h2 style="text-align: center; ">All our Departments are listed here...</h2>
 <table id="departments">
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.Name)</th>
-            <th>Details</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>Details</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var item in Model)
+    {
         <tr>
             <td>@Html.DisplayFor(modelItem => item.Name)</td>
-            <td><a asp-controller="Departments" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Detay</a></td>
-            <td><a asp-controller="Departments" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a></td>
-            <td><a asp-controller="Departments" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary">Delete</a></td>
+            <td><a asp-controller="Departments" asp-action="Details" asp-route-id="@item.Id" class="w3-button w3-light-blue">Details</a></td>
+            <td><a asp-controller="Departments" asp-action="Edit" asp-route-id="@item.Id" class="w3-button w3-indigo">Edit</a></td>
+            <td><a asp-controller="Departments" asp-action="Delete" asp-route-id="@item.Id" class="w3-button w3-red">Delete</a></td>
         </tr>
-        }
+    }
 </table>
+
+<br><br>
+
+<div id="button-text"><a asp-action="Create" class="w3-button w3-black"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;ADD NEW</a></div>>
