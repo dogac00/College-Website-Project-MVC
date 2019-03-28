@@ -33,12 +33,6 @@ namespace DogacProject.Controllers
         [HttpPost]
         public IActionResult Create(Student stu)
         {
-            var depst = DogacContext.Department.Where(p => p.Name == "dfsdf");
-
-            if (stu.Department == null)
-            {
-
-            }
             if (ModelState.IsValid)
             {
                 DogacContext.Students.Add(stu);
