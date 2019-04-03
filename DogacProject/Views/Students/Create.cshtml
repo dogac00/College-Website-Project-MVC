@@ -3,6 +3,9 @@
     ViewData["Title"] = "Create";
 }
 
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+
 <style>
     #my_select {
         width: 40%;
@@ -22,39 +25,59 @@
     h1 {
         text-align: center;
     }
-
 </style>
 
-<h1>Create a new Student</h1>
-<hr />
+<br><br>
 
-<div class="row" style="display: block; text-align: center; ">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <h3>Student Name</h3>
-                <input asp-for="Name" class="form-control w3-input w3-border w3-round-large" style="width: 40%; display: inline-block; " />
-                <span asp-validation-for="Name" class="text-danger"></span>
+<section class="ab-info-main py-md-5">
+    <div class="container py-md-3">
+        <h3 class="tittle text-center mb-lg-5 mb-3"> Create Post</h3>
+        <div class="speak px-lg-5">
+
+            <div class="row" style="display: block; text-align: center; ">
+                <div class="col-md-4">
+                    <form asp-action="Create" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <h3>Student Name</h3>
+                            <input asp-for="Name" class="form-control w3-input w3-border w3-round-large" style="width: 40%; display: inline-block; " />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <h3>Student ID</h3>
+                            <input asp-for="StuID" id="stu_input" class="form-control w3-input w3-border w3-round-large" />
+                            <span asp-validation-for="StuID" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <h3>Department Name</h3>
+                            <select asp-for="DepartmentId" id="my_select" class="form-control" asp-items="ViewBag.DepartmentName"></select>
+                        </div>
+                        <div class="form-group">
+                            <h3>Upload Your Picture</h3>
+                            <input type="file" id="FileUrl" name="FileUrl" class="form-control w3-input w3-border w3-round-large" style="width: 40%; display: inline-block; " />
+                        </div>
+                        <div class="form-group" style="width: 60%; display: inline-block; ">
+                            <h3>Paste your CV Here</h3>
+                            <input asp-for="CVContent" class="form-control w3-input w3-border w3-round-large" />
+                            <span asp-validation-for="CVContent" class="text-danger"></span>
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="w3-input w3-border w3-round-large" style="width: 40%; display: inline-block; " />
+                        </div>
+                    </form>
+                </div>
             </div>
-            <br>
-            <div class="form-group">
-                <h3>Department Name</h3>
-                <select asp-for="DepartmentId" id="my_select" class="form-control" asp-items="ViewBag.DepartmentName" ></select>
-            </div>
-            <div class="form-group">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <h3>Student ID</h3>
-                <span asp-validation-for="StuID" class="text-danger"></span>
-                <input asp-for="StuID" id="stu_input" class="form-control w3-input w3-border w3-round-large" />
-            </div>
-            <br>
-            <div class="form-group">
-                <input type="submit" value="Create" class="w3-input w3-border w3-round-large" style="width: 40%; display: inline-block; " />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+</section>
 
 <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        var editor = new Jodit('#CVContent');
+    </script>
+}

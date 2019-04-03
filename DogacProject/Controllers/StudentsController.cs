@@ -6,16 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 using DogacProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace DogacProject.Controllers
 {
     public class StudentsController : Controller
     {
         DogacContext DogacContext;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public StudentsController(DogacContext context)
+        public StudentsController(DogacContext context, IHostingEnvironment hostingEnvironment)
         {
             DogacContext = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public IActionResult Index()
@@ -31,18 +36,30 @@ namespace DogacProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Student stu)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Student stu, IFormFile FileUrl)
         {
+            stu.dateCreated = DateTime.Now;
+
             if (ModelState.IsValid)
             {
-                DogacContext.Students.Add(stu);
-                DogacContext.SaveChanges();
-                return RedirectToAction("Index");
+                string dirPath = Path.Combine(_hostingEnvironment.WebRootPath, @"uploads\");
+                var fileName = Guid.NewGuid().ToString().Replace("-", "") + "_" + FileUrl.FileName;
+
+                using (var fileStream = new FileStream(dirPath + Path.GetFileName(fileName), FileMode.Create))
+                {
+                    await FileUrl.CopyToAsync(fileStream);
+                }
+
+                stu.ImageUrl = Path.GetFileName(fileName);
+                DogacContext.Add(stu);
+
+                await DogacContext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            else
-            {
-                return View(stu);
-            }
+
+            ViewData["DepartmentId"] = new SelectList(DogacContext.Department, "Id", "Name", stu.DepartmentId);
+            return View(stu);
         }
 
         public IActionResult Edit(int? id)

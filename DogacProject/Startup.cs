@@ -32,10 +32,8 @@ namespace DogacProject
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
 
             services.AddDbContext<DogacContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("DogacConnection")));
