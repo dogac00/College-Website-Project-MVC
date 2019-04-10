@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DogacProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DogacProject.Controllers
 {
+    [Authorize]
     public class DepartmentsController : Controller
     {
         private readonly DogacContext _context;
@@ -18,11 +20,13 @@ namespace DogacProject.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Department.ToListAsync());
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

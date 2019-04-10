@@ -9,9 +9,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DogacProject.Controllers
 {
+    [Authorize]
     public class StudentsController : Controller
     {
         DogacContext DogacContext;
@@ -23,6 +25,7 @@ namespace DogacProject.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var students = DogacContext.Students.ToList();
@@ -111,6 +114,7 @@ namespace DogacProject.Controllers
             }
         }
 
+        [AllowAnonymous]
         public IActionResult Details(int id)
         {
 

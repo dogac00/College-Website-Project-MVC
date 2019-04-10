@@ -12947,11 +12947,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nuri.akyildiz\\Desktop\\Dogac-StudentList-Project-master\\Dogac-StudentList-Project-master\\DogacProject\\DogacProject.csproj",
+      "projectUniqueName": "C:\\Users\\nuri.akyildiz\\Desktop\\git\\College-Website-Project-MVC\\DogacProject\\DogacProject.csproj",
       "projectName": "DogacProject",
-      "projectPath": "C:\\Users\\nuri.akyildiz\\Desktop\\Dogac-StudentList-Project-master\\Dogac-StudentList-Project-master\\DogacProject\\DogacProject.csproj",
+      "projectPath": "C:\\Users\\nuri.akyildiz\\Desktop\\git\\College-Website-Project-MVC\\DogacProject\\DogacProject.csproj",
       "packagesPath": "C:\\Users\\nuri.akyildiz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nuri.akyildiz\\Desktop\\Dogac-StudentList-Project-master\\Dogac-StudentList-Project-master\\DogacProject\\obj\\",
+      "outputPath": "C:\\Users\\nuri.akyildiz\\Desktop\\git\\College-Website-Project-MVC\\DogacProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

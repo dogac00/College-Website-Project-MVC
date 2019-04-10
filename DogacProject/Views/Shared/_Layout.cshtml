@@ -22,6 +22,7 @@
             <a asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button w3-hover-red"><b>HOME</b></a>
             <a asp-controller="Students" asp-action="Index" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> <b>STUDENTS</b></a>
             <a asp-controller="Departments" asp-action="Index" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> <b>DEPARTMENTS</b></a>
+            @Html.Partial("_LoginPartial")
             @(await Component.InvokeAsync("DepartmentsMenu"))
             <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
                 <i class="fa fa-search"></i>
