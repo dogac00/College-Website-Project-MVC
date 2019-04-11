@@ -8,16 +8,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DogacProject.Models
 {
-    public class DogacContext : IdentityDbContext
+    public class DogacContext : IdentityDbContext<MyUser>
     {
         public DogacContext(DbContextOptions<DogacContext> options) : base(options)
         {
 
         }
+
         public DbSet<Student> Students { get; set; }
 
         public DbSet<Department> Department { get; set; }
-
-        public DbSet<User> Users { get; set; }
+        
     }
 }

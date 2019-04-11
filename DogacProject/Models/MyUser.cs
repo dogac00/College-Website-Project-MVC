@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DogacProject.Models
 {
-    public class User : IdentityUser
+    public class MyUser : IdentityUser
     {
         public string Name { get; set; }
-        public long UserId { get; set; }
+        public long UserIdNumber { get; set; }
         public string City { get; set; }
     }
 }

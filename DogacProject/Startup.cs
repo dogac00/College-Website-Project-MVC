@@ -38,7 +38,7 @@ namespace DogacProject
             services.AddDbContext<DogacContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DogacConnection")));
-            services.AddDefaultIdentity<User>()
+            services.AddDefaultIdentity<MyUser>().AddRoles<IdentityRole>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<DogacContext>();
 
