@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DogacProject.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
     public class StudentsController : Controller
     {
         DogacContext DogacContext;
@@ -46,6 +46,11 @@ namespace DogacProject.Controllers
 
             if (ModelState.IsValid)
             {
+                if (!User.IsInRole("departmentManager" + stu.DepartmentId.ToString()))
+                {
+                    return Unauthorized();
+                }
+
                 string dirPath = Path.Combine(_hostingEnvironment.WebRootPath, @"uploads\");
                 var fileName = Guid.NewGuid().ToString().Replace("-", "") + "_" + FileUrl.FileName;
 
@@ -74,6 +79,7 @@ namespace DogacProject.Controllers
                 var students = DogacContext.Students.ToList();
                 return View(students);
             }
+
             var student = DogacContext.Students.Find(id);
 
             if (student == null)
@@ -102,6 +108,12 @@ namespace DogacProject.Controllers
             {
                 return BadRequest();
             }
+
+            if (User.IsInRole("departmentManager" + student.DepartmentId.ToString()))
+            {
+                return Unauthorized();
+            }
+
             if (ModelState.IsValid)
             {
                 DogacContext.Students.Update(student);
@@ -150,6 +162,11 @@ namespace DogacProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (User.IsInRole("departmentManager" + id.ToString()))
+            {
+                return Unauthorized();
+            }
+
             var department = await DogacContext.Students.FindAsync(id);
             DogacContext.Students.Remove(department);
             await DogacContext.SaveChangesAsync();

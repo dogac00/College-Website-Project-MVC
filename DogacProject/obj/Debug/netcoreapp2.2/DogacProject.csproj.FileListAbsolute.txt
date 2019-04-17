@@ -228,3 +228,4 @@ C:\Users\nuri.akyildiz\Desktop\git\College-Website-Project-MVC\DogacProject\obj\
 C:\Users\nuri.akyildiz\Desktop\git\College-Website-Project-MVC\DogacProject\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
 C:\Users\nuri.akyildiz\Desktop\git\College-Website-Project-MVC\DogacProject\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
 C:\Users\nuri.akyildiz\Desktop\git\College-Website-Project-MVC\DogacProject\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
+C:\Users\nuri.akyildiz\Desktop\git\College-Website-Project-MVC\DogacProject\obj\Debug\netcoreapp2.2\Razor\Views\UserManagement\Index.g.cshtml.cs
