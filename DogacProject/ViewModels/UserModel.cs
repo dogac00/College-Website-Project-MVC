@@ -11,6 +11,6 @@ namespace DogacProject.ViewModels
         public string UserName { get; set; }
         public long UserIdNumber { get; set; }
         public bool IsAdmin { get; set; }
-        public IList<string> ManagerTo { get; set; }
+        public bool IsDepartmentManager { get; set; }
     }
 }

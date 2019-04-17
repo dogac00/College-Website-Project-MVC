@@ -46,11 +46,6 @@ namespace DogacProject.Controllers
 
             if (ModelState.IsValid)
             {
-                if (!User.IsInRole("departmentManager" + stu.DepartmentId.ToString()))
-                {
-                    return Unauthorized();
-                }
-
                 string dirPath = Path.Combine(_hostingEnvironment.WebRootPath, @"uploads\");
                 var fileName = Guid.NewGuid().ToString().Replace("-", "") + "_" + FileUrl.FileName;
 

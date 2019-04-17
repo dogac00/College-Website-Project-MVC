@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DogacProject.Controllers
 {
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = "admin, departmentManager")]
     public class DepartmentsController : Controller
     {
         private readonly DogacContext _context;

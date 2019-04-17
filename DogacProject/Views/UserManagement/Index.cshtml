@@ -1,5 +1,17 @@
 ﻿@model IEnumerable<DogacProject.ViewModels.UserModel>
 
+<style>
+    #my_select {
+        width: 40%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+</style>
+
 <br><br>
     <table class="table">
         <thead>
@@ -12,6 +24,9 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.IsAdmin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsDepartmentManager)
                 </th>
                 <th></th>
             </tr>
@@ -30,6 +45,9 @@
                     @Html.DisplayFor(modelItem => item.IsAdmin)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.IsDepartmentManager)
+                </td>
+                <td>
                     @if (item.IsAdmin)
                     {
                         <a asp-action="RemoveAdmin" asp-route-id="@item.Id" class="btn btn-danger">Remove Admin</a>
@@ -39,6 +57,19 @@
                         <a asp-action="MakeAdmin" asp-route-id="@item.Id" class="btn btn-primary">Make Admin</a>
                     }
                 </td>
+                @if (item.IsDepartmentManager)
+                {
+                    <td>
+                        <a asp-action="RemoveDepartmentManager" asp-route-id="@item.Id" class="btn btn-danger">Remove Department Manager</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a asp-action="MakeDepartmentManager" asp-route-id="@item.Id" class="btn btn-primary">Make Department Manager</a>
+                    </td>
+                }
+
             </tr>
             }
         </tbody>

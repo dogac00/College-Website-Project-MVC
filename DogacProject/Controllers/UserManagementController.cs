@@ -6,6 +6,7 @@ using DogacProject.Models;
 using DogacProject.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DogacProject.Controllers
 {
@@ -25,7 +26,6 @@ namespace DogacProject.Controllers
         // GET: UserManagement
         public async Task<ActionResult> Index()
         {
-
             var userList = _context
                 .Users
                 .ToList();
@@ -35,15 +35,15 @@ namespace DogacProject.Controllers
             foreach (var item in userList)
             {
                 bool isadmin = await _userManager.IsInRoleAsync(item, "admin");
-                IList<string> managerTo = await _userManager.GetRolesAsync(item);
+                bool isDepartmentManager = await _userManager.IsInRoleAsync(item, "departmentManager");
 
                 var user = new UserModel
                 {
                     Id = item.Id,
-                    UserName = item.Name,
+                    UserName = item.UserName,
                     UserIdNumber = item.UserIdNumber,
                     IsAdmin = isadmin,
-                    ManagerTo = managerTo
+                    IsDepartmentManager = isDepartmentManager
                 };
 
                 userModelList.Add(user);
@@ -73,23 +73,23 @@ namespace DogacProject.Controllers
         }
 
 
-        public async Task<ActionResult> MakeDepartmentManager(string id, int departmentId)
+        public async Task<ActionResult> MakeDepartmentManager(string id)
         {
             if (!(await _roleManager.RoleExistsAsync("departmentManager")))
             {
-                await _roleManager.CreateAsync(new IdentityRole { Name = "departmentManager" + departmentId.ToString() });
+                await _roleManager.CreateAsync(new IdentityRole { Name = "departmentManager" });
             }
 
             var user = await _userManager.FindByIdAsync(id);
-            await _userManager.AddToRoleAsync(user, "departmentManager" + departmentId.ToString());
+            await _userManager.AddToRoleAsync(user, "departmentManager");
 
             return RedirectToAction("index");
         }
 
-        public async Task<ActionResult> RemoveDepartmentManager(string id, int departmentId)
+        public async Task<ActionResult> RemoveDepartmentManager(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
-            await _userManager.RemoveFromRoleAsync(user, "departmentManager" + departmentId.ToString());
+            await _userManager.RemoveFromRoleAsync(user, "departmentManager");
 
             return RedirectToAction("index");
         }
