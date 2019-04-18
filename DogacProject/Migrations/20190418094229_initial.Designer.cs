@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DogacProject.Migrations
 {
     [DbContext(typeof(DogacContext))]
-    [Migration("20190417082402_SomeFixes")]
-    partial class SomeFixes
+    [Migration("20190418094229_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
