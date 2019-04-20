@@ -10,7 +10,7 @@
         border-radius: 4px;
         box-sizing: border-box;
     }
-</style>
+    </style>
 
 <br><br>
     <table class="table">
@@ -59,6 +59,12 @@
                 </td>
                 @if (item.IsDepartmentManager)
                 {
+                <form asp-action="MakeManagerTo">
+                    <input name="id" value="@item.Id" />
+                    <select name="departmentId" id="my_select" asp-items="ViewBag.DepartmentNames"></select>
+                    <input type="submit" value="Assign" />
+                </form>
+
                     <td>
                         <a asp-action="RemoveDepartmentManager" asp-route-id="@item.Id" class="btn btn-danger">Remove Department Manager</a>
                     </td>

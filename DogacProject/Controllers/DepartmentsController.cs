@@ -7,17 +7,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DogacProject.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace DogacProject.Controllers
 {
-    [Authorize(Roles = "admin, departmentManager")]
+    [Authorize]
     public class DepartmentsController : Controller
     {
         private readonly DogacContext _context;
+        private readonly UserManager<MyUser> _userManager;
 
-        public DepartmentsController(DogacContext context)
+        public DepartmentsController(DogacContext context, UserManager<MyUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [AllowAnonymous]

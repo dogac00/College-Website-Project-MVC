@@ -26,6 +26,9 @@ namespace DogacProject.Controllers
         // GET: UserManagement
         public async Task<ActionResult> Index()
         {
+            
+            ViewData["DepartmentNames"] = new SelectList(_context.Department, "Id", "Name", -1);
+
             var userList = _context
                 .Users
                 .ToList();
@@ -90,6 +93,14 @@ namespace DogacProject.Controllers
         {
             var user = await _userManager.FindByIdAsync(id);
             await _userManager.RemoveFromRoleAsync(user, "departmentManager");
+
+            return RedirectToAction("index");
+        }
+
+        public async Task<IActionResult> MakeManagerTo(string id, int departmentId)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            user.departmentManagerId = departmentId;
 
             return RedirectToAction("index");
         }
