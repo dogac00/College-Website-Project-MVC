@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace DogacProject.Controllers
 {
@@ -17,11 +18,13 @@ namespace DogacProject.Controllers
     public class StudentsController : Controller
     {
         DogacContext DogacContext;
+        UserManager<MyUser> _userManager;
         private readonly IHostingEnvironment _hostingEnvironment;
 
-        public StudentsController(DogacContext context, IHostingEnvironment hostingEnvironment)
+        public StudentsController(DogacContext context, UserManager<MyUser> userManager, IHostingEnvironment hostingEnvironment)
         {
             DogacContext = context;
+            _userManager = userManager;
             _hostingEnvironment = hostingEnvironment;
         }
 
@@ -124,8 +127,12 @@ namespace DogacProject.Controllers
         [AllowAnonymous]
         public IActionResult Details(int id)
         {
+            var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
+
+            ViewData["ManagerToId"] = user.departmentManagerId;
 
             Student student = DogacContext.Students.Include(s=>s.Department).Where(s => s.Id == id).FirstOrDefault();
+
             if (student != null)
             {
                 return View(student);

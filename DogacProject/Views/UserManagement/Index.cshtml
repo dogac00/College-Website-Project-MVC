@@ -1,14 +1,18 @@
 ﻿@model IEnumerable<DogacProject.ViewModels.UserModel>
+@inject DogacContext _context
 
 <style>
     #my_select {
-        width: 40%;
+        width: 80%;
         padding: 12px 20px;
         margin: 8px 0;
         display: inline-block;
         border: 1px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
+    }
+    .table {
+        border-spacing: 20px;
     }
     </style>
 
@@ -17,16 +21,19 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.UserName)
+                    Name
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.UserIdNumber)
+                    ID
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.IsAdmin)
+                    Is Admin
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.IsDepartmentManager)
+                    Is Department Manager
+                </th>
+                <th>
+                    Manager To
                 </th>
                 <th></th>
             </tr>
@@ -48,31 +55,40 @@
                     @Html.DisplayFor(modelItem => item.IsDepartmentManager)
                 </td>
                 <td>
+                    @if (item.IsDepartmentManager)
+                    {
+                        @_context.Department.FirstOrDefault(d => d.Id == item.ManagerTo).Name
+
+                    }
+                </td>
+                <td>
                     @if (item.IsAdmin)
                     {
-                        <a asp-action="RemoveAdmin" asp-route-id="@item.Id" class="btn btn-danger">Remove Admin</a>
+                        <a asp-action="RemoveAdmin" asp-route-id="@item.Id" class="w3-button w3-red">Remove Admin</a>
                     }
                     else
                     {
-                        <a asp-action="MakeAdmin" asp-route-id="@item.Id" class="btn btn-primary">Make Admin</a>
+                        <a asp-action="MakeAdmin" asp-route-id="@item.Id" class="w3-button w3-blue">Make Admin</a>
                     }
                 </td>
                 @if (item.IsDepartmentManager)
                 {
-                <form asp-action="MakeManagerTo">
-                    <input name="id" value="@item.Id" />
-                    <select name="departmentId" id="my_select" asp-items="ViewBag.DepartmentNames"></select>
-                    <input type="submit" value="Assign" />
-                </form>
+                    <td>
+                        <a asp-action="RemoveDepartmentManager" asp-route-id="@item.Id" class="w3-button w3-red">Remove Department Manager</a>
+                    </td>
 
                     <td>
-                        <a asp-action="RemoveDepartmentManager" asp-route-id="@item.Id" class="btn btn-danger">Remove Department Manager</a>
+                    <form asp-action="MakeManagerTo">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <select name="departmentId" id="my_select" asp-items="ViewBag.DepartmentNames"></select>
+                        <input type="submit" value="Assign" />
+                    </form>
                     </td>
                 }
                 else
                 {
                     <td>
-                        <a asp-action="MakeDepartmentManager" asp-route-id="@item.Id" class="btn btn-primary">Make Department Manager</a>
+                        <a asp-action="MakeDepartmentManager" asp-route-id="@item.Id" class="w3-button w3-blue">Make Department Manager</a>
                     </td>
                 }
 

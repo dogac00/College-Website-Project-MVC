@@ -46,7 +46,8 @@ namespace DogacProject.Controllers
                     UserName = item.UserName,
                     UserIdNumber = item.UserIdNumber,
                     IsAdmin = isadmin,
-                    IsDepartmentManager = isDepartmentManager
+                    IsDepartmentManager = isDepartmentManager,
+                    ManagerTo = item.departmentManagerId
                 };
 
                 userModelList.Add(user);
@@ -69,7 +70,6 @@ namespace DogacProject.Controllers
 
         public async Task<ActionResult> RemoveAdmin(string id)
         {
-
             var user = await _userManager.FindByIdAsync(id);
             await _userManager.RemoveFromRoleAsync(user, "admin");
             return RedirectToAction("index");
@@ -97,10 +97,12 @@ namespace DogacProject.Controllers
             return RedirectToAction("index");
         }
 
-        public async Task<IActionResult> MakeManagerTo(string id, int departmentId)
+        public async Task<ActionResult> MakeManagerTo(string id, int departmentId)
         {
-            var user = await _userManager.FindByIdAsync(id);
-            user.departmentManagerId = departmentId;
+            var thisUser = await _userManager.FindByIdAsync(id);
+            thisUser.departmentManagerId = departmentId;
+            _context.Users.Update(thisUser);
+            _context.SaveChanges();
 
             return RedirectToAction("index");
         }

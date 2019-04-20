@@ -48,7 +48,10 @@
         <td>@Model.Name</td>
         <td>@Model.Department.Name</td>
         <td>@Model.StuID</td>
-        <td><a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-blue">Edit</a></td>
+        @if ((int)ViewData["ManagerToId"] == Model.DepartmentId)
+        {
+            <td><a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-blue">Edit</a></td>
+        }
         <td><a asp-action="Delete" asp-route-id="@Model.Id" class="w3-button w3-red">Delete</a></td>
     </tr>
 </table>
