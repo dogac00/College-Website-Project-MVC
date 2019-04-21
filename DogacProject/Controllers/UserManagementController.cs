@@ -64,6 +64,7 @@ namespace DogacProject.Controllers
             {
                 await _roleManager.CreateAsync(new IdentityRole { Name = "admin" });
             }
+
             var user = await _userManager.FindByIdAsync(id);
             await _userManager.AddToRoleAsync(user, "admin");
             return RedirectToAction("index");
@@ -75,7 +76,6 @@ namespace DogacProject.Controllers
             await _userManager.RemoveFromRoleAsync(user, "admin");
             return RedirectToAction("index");
         }
-
 
         public async Task<ActionResult> MakeDepartmentManager(string id)
         {
@@ -94,6 +94,9 @@ namespace DogacProject.Controllers
         {
             var user = await _userManager.FindByIdAsync(id);
             await _userManager.RemoveFromRoleAsync(user, "departmentManager");
+            user.departmentManagerId = 0;
+            _context.Update(user);
+            await _context.SaveChangesAsync();
 
             return RedirectToAction("index");
         }

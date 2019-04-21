@@ -11,6 +11,6 @@ namespace DogacProject.Models
         public string Name { get; set; }
         public long UserIdNumber { get; set; }
         public string City { get; set; }
-        public int departmentManagerId { get; set; }
+        public int departmentManagerId { get; set; } = 0;
     }
 }

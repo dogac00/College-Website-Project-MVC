@@ -55,9 +55,15 @@
                     @Html.DisplayFor(modelItem => item.IsDepartmentManager)
                 </td>
                 <td>
-                    @if (item.IsDepartmentManager && _context.Department.Any())
-                    {
-                        @_context.Department.FirstOrDefault(d => d.Id == item.ManagerTo).Name
+                    @{
+                        if (_context.Department.FirstOrDefault(d => d.Id == item.ManagerTo) == null)
+                        {
+                            <p>No Departments.</p>
+                        }
+                        else if (item.IsDepartmentManager)
+                        {
+                            @_context.Department.FirstOrDefault(d => d.Id == item.ManagerTo).Name
+                        }
                     }
                 </td>
                 <td>

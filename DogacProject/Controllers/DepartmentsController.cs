@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace DogacProject.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
     public class DepartmentsController : Controller
     {
         private readonly DogacContext _context;

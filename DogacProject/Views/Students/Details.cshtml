@@ -52,6 +52,10 @@
         {
             <td><a asp-action="Edit" asp-route-id="@Model.Id" class="w3-button w3-blue">Edit</a></td>
         }
+        else
+        {
+            <td></td>
+        }
         <td><a asp-action="Delete" asp-route-id="@Model.Id" class="w3-button w3-red">Delete</a></td>
     </tr>
 </table>
