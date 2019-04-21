@@ -1,8 +1,11 @@
 ﻿@model List<Student>
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<MyUser> _userManager
+
 @{
     ViewData["Title"] = "Students";
 }
-     
+
 <style>
 
     #students {
@@ -11,26 +14,26 @@
         width: 100%;
     }
 
-    #students td, #students th {
+        #students td, #students th {
             border: 1px solid #ddd;
             padding: 8px;
         }
 
-    #students tr:nth-child(even) {
+        #students tr:nth-child(even) {
             background-color: #f2f2f2;
         }
 
-    #students tr:hover {
+        #students tr:hover {
             background-color: #ddd;
         }
 
-    #students th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color: #0A1C34;
-        color: white;
-    }
+        #students th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #0A1C34;
+            color: white;
+        }
 
     #button-text {
         display: block;
@@ -61,7 +64,14 @@
         <td>@item.Name</td>
         <td><a asp-controller="Students" asp-action="Details" asp-route-id="@item.Id" class="w3-button w3-blue">Details</a></td>
         <td><img class="group list-group-image img-fluid" style="max-height: 40px; " src="~/uploads/@item.ImageUrl" alt="" /></td>
-        <td><a asp-controller="Students" asp-action="Edit" asp-route-id="@item.Id" class="w3-button w3-indigo">Edit</a></td>
+        @if (User.Identity.Name != null && _userManager.FindByNameAsync(User.Identity.Name).Result.departmentManagerId == item.DepartmentId)
+        {
+            <td><a asp-controller="Students" asp-action="Edit" asp-route-id="@item.Id" class="w3-button w3-indigo">Edit</a></td>
+        }
+        else
+        {
+            <td></td>
+        }
         <td><a asp-controller="Students" asp-action="Delete" asp-route-id="@item.Id" class="w3-button w3-red">Delete</a></td>
     </tr>
     }

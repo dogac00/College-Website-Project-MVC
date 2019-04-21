@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using DogacProject.Models;
 using DogacProject.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DogacProject.Controllers
 {
+    [Authorize]
     public class UserManagementController : Controller
     {
         private readonly DogacContext _context;
@@ -55,7 +57,6 @@ namespace DogacProject.Controllers
 
             return View(userModelList);
         }
-
 
         public async Task<ActionResult> MakeAdmin(string id)
         {

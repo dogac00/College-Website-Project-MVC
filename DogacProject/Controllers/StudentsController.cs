@@ -79,6 +79,12 @@ namespace DogacProject.Controllers
             }
 
             var student = DogacContext.Students.Find(id);
+            var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
+
+            if (user.departmentManagerId != student.DepartmentId)
+            {
+                return View("AccessDenied");
+            }
 
             if (student == null)
             {

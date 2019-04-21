@@ -385,3 +385,4 @@ C:\Users\nuri.akyildiz\Desktop\github\College-Website-Project-MVC\DogacProject\o
 C:\Users\nuri.akyildiz\Desktop\github\College-Website-Project-MVC\DogacProject\obj\Debug\netcoreapp2.2\DogacProject.dll
 C:\Users\nuri.akyildiz\Desktop\github\College-Website-Project-MVC\DogacProject\obj\Debug\netcoreapp2.2\DogacProject.pdb
 C:\Users\nuri.akyildiz\Desktop\github\College-Website-Project-MVC\DogacProject\obj\Debug\netcoreapp2.2\DogacProject.csproj.CopyComplete
+C:\Users\nuri.akyildiz\Desktop\github\College-Website-Project-MVC\DogacProject\obj\Debug\netcoreapp2.2\Razor\Views\Students\AccessDenied.g.cshtml.cs
